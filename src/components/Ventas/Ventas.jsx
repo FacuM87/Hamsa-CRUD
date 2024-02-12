@@ -6,24 +6,24 @@ const Ventas = () => {
 
   const [productos, setProductos]= useState ([])
   
+  const getProductos = async () =>{
+    const productosRef = collection(db,"productos")
+    const productosSnap = await getDocs(productosRef)
+
+    let productosData = []
+    if (productosSnap) {
+      productosData = productosSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      console.log(productosData);
+      setProductos(productosData)
+    } else { console.log("Couldnt get data from db") }
+  }
+
   useEffect(() => {
-    const getProductos = async () =>{
       try {
-        const productosRef = collection(db,"productos")
-        const productosSnap = await getDocs(productosRef)
-        
-        const productosData = productosSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-        console.log(productosData);
-  
-        if (productosData) {
-          setProductos(productosData)
-        } else { console.log(productosData); }
+        getProductos()
       } catch (error) {
         console.log(error);
       }
-    }
-    getProductos()
-  
   }, [])
 
   return (
