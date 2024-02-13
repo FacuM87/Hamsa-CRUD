@@ -4,7 +4,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { useUser } from '../../UserContext/UserProvider'
 
 const Ventas = () => {
-  const { user } = useUser()
+  const { user, logout } = useUser()
   const [productos, setProductos]= useState ([])
   
   const getProductos = async () =>{
@@ -37,6 +37,7 @@ const Ventas = () => {
       <main>
         {user? 
         <>
+          <button onClick={logout}>Logout</button>
           <h2>Productos</h2>
           <ul>
           {productos.map(producto => (
