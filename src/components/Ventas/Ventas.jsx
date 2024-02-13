@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../config/firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { useUser } from '../../UserContext/UserProvider'
+import { img } from "./assets/assets.js"
 
 const Ventas = () => {
   const { user, logout } = useUser()
@@ -32,7 +33,7 @@ const Ventas = () => {
   return (
     <>
       <header>
-        { user? <p>{user.email}</p> : <p>No user signed up</p>}
+        { user? <p className='me-0'>{user.email}</p> : <p>Login please</p>}
       </header>  
       <main>
         {user? 
@@ -42,12 +43,14 @@ const Ventas = () => {
           <ul>
           {productos.map(producto => (
             <li key={producto.id}>
-              <strong>Nombre: </strong>{producto.nombre}
+              <p><strong>Nombre: </strong>{producto.nombre}</p>
+              <p><strong>Precio: </strong>${producto.precio_venta}</p>
+              <img src= {img[producto.nombre]}  alt='img de producto'/>
             </li>
           ))}
           </ul>
         </> : <>Login first</>
-      }
+        }
       </main>
       <footer></footer>
     </>

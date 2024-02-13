@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
       setUser(userCredentials.user);
       return userCredentials;
     } catch (error) {
-      console.error("Error de inicio de sesión:", error);
+      console.error("Couldnt login: ", error);
       throw error;
     }
   };
