@@ -33,7 +33,7 @@ const Ventas = () => {
   return (
     <>
       <header>
-        { user? <p className='me-0'>{user.email}</p> : <p>Login please</p>}
+        { user? <p className=''>{user.email}</p> : <p>Login please</p>}
       </header>  
       <main>
         {user? 
