@@ -17,7 +17,6 @@ export const UserProvider = ({ children }) => {
       return userCredentials;
     } catch (error) {
       console.error("Couldnt login: ", error);
-      throw error;
     }
   };
 
