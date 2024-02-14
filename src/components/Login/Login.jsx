@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useUser } from '../../UserContext/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import "./Login.css"
 
 
 const Login = () => {
@@ -20,7 +21,8 @@ const Login = () => {
   };
 
   return (
-    <main>
+    <main className='login-container'>
+      <h1>Login</h1>
       <form onSubmit={submitHandler}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email</label>

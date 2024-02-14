@@ -3,6 +3,7 @@ import { db } from '../../config/firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { useUser } from '../../UserContext/UserProvider'
 import { img } from "./assets/assets.js"
+import GeoLocation from '../GeoLocation/GeoLocation.jsx'
 
 const Ventas = () => {
   const { user, logout } = useUser()
@@ -33,7 +34,12 @@ const Ventas = () => {
   return (
     <>
       <header>
-        { user? <p className=''>{user.email}</p> : <p>Login please</p>}
+        { user? 
+        <>
+          <p className=''>{user.email}</p>
+          <GeoLocation/> 
+        </>
+        : <p>Login please</p>}
       </header>  
       <main>
         {user? 
@@ -43,16 +49,19 @@ const Ventas = () => {
           <ul>
           {productos.map(producto => (
             <li key={producto.id}>
-              <p><strong>Nombre: </strong>{producto.nombre}</p>
-              <p><strong>Precio: </strong>${producto.precio_venta}</p>
-              <img src= {img[producto.nombre]}  alt='img de producto'/>
+              <div>
+                <p><strong>Nombre: </strong>{producto.nombre}</p>
+                <p><strong>Precio: </strong>${producto.precio_venta}</p>
+              </div>
+              <div>
+                <img className='img-fluid' src= {img[producto.nombre]}  alt='img de producto'/>
+              </div>
             </li>
           ))}
           </ul>
         </> : <>Login first</>
         }
       </main>
-      <footer></footer>
     </>
   )
 }
