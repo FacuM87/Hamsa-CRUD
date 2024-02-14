@@ -36,7 +36,7 @@ const GeoLocation = () => {
         console.log(url);
 		fetch(`${url}${geolocation}`)
 		.then(response => {return response.json()})
-		  .then(data => {
+		.then(data => {
 			console.log(data)
 			setgeoData({
 				nombreCiudad:data.location.name,
