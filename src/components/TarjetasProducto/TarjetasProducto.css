@@ -1,0 +1,16 @@
+.tarjetasProducto{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.imgContainer{
+    width: 100%;
+    height: 80%;
+    max-width: 238px;
+    max-height: 300px;
+}
+
+.tarjetasInfo{
+}

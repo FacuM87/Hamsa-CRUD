@@ -31,13 +31,10 @@ const GeoLocation = () => {
 	useEffect(() => {
 		if (location) {
 		const geolocation = `${location.latitude},${location.longitude}`;
-		console.log(geolocation);
         const url = process.env.REACT_APP_GEO_API_URL;
-        console.log(url);
 		fetch(`${url}${geolocation}`)
 		.then(response => {return response.json()})
 		.then(data => {
-			console.log(data)
 			setgeoData({
 				nombreCiudad:data.location.name,
 				pais:data.location.country,
@@ -53,9 +50,6 @@ const GeoLocation = () => {
 		  });
 		}
 	}, [location]);
-
-	console.log(location);
-	console.log(geoData);
 
   return (
     <div className='text-end me-3'>
