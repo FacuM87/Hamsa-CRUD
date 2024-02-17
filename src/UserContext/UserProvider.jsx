@@ -8,12 +8,31 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [nickname, setNickname] = useState(null)
   const navigate = useNavigate()
+
+  const saludo = (email) =>{
+	  switch (email) {
+		case process.env.REACT_APP_MAIL_1:
+			setNickname("Facu")
+			break
+		case process.env.REACT_APP_MAIL_2:
+			setNickname("Alci")
+			break
+		case process.env.REACT_APP_MAIL_3:
+			setNickname("Gus")
+			break
+		default:
+			console.log("Couldnt get a nickname");
+			break
+	  } 
+  }
 
   const login = async (email, password) => {
     try {
       const userCredentials = await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredentials.user);
+	  saludo(userCredentials.user.email)	
       return userCredentials;
     } catch (error) {
       console.error("Couldnt login: ", error);
@@ -31,7 +50,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, nickname, login, logout }}>
       {children}
     </UserContext.Provider>
   );

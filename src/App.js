@@ -7,18 +7,18 @@ import { UserProvider } from './UserContext/UserProvider';
 import Footer from './components/Footer/Footer';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <UserProvider>
-        <Routes>
-          <Route path='/' element={<Login/>}/>
-          <Route path='/ventas' element={<Ventas/>}/>
-          <Route path='/crud' element={<CRUD/>}/>
-        </Routes>
-        <Footer/>
-      </UserProvider>
-    </BrowserRouter>
-    );
+	return (
+		<BrowserRouter>
+		<UserProvider>
+			<Routes>
+			<Route path='/' element={<Login/>}/>
+			<Route path='/ventas' element={<Ventas/>}/>
+			<Route path='/crud' element={<CRUD/>}/>
+			</Routes>
+			<Footer/>
+		</UserProvider>
+		</BrowserRouter>
+		);
 }
 
 export default App;

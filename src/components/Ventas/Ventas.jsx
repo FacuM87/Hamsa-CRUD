@@ -7,8 +7,9 @@ import TarjetasProducto from '../TarjetasProducto/TarjetasProducto.jsx'
 import "./Ventas.css"
 
 const Ventas = () => {
-  const { user, logout } = useUser()
+  const { user, nickname, logout } = useUser()
   const [productos, setProductos]= useState ([])
+
   
   const getProductos = async () =>{
     const productosRef = collection(db,"productos")
@@ -36,7 +37,7 @@ const Ventas = () => {
 		<header>
 			{ user? 
 			<>
-				<p className=''>{user.email}</p>
+				<p className=''>Hola {nickname}!</p>
 				<GeoLocation/> 
 			</>
 			: <p>Login please</p>}
