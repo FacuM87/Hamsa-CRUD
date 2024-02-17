@@ -34,27 +34,23 @@ const Ventas = () => {
 
   return (
     <>
-		<header>
-			{ user? 
-			<>
+		{ user?
+		<>
+			<header>
 				<p className=''>Hola {nickname}!</p>
-				<GeoLocation/> 
-			</>
-			: <p>Login please</p>}
-		</header>  
-		<main>
-			{user? 
-			<>
 				<button onClick={logout}>Logout</button>
-				<h2>Productos</h2>
+				<GeoLocation/> 
+			</header>  
+			<main>
+				<h2 className='text-center'>Productos</h2>
 				<section className='tarjetasContainer'>
-				{productos.map(producto => (
+					{productos.map(producto => (
 					<TarjetasProducto key={producto.id} {...producto}/>
-				))}
+					))}
 				</section>
-			</> : <>Login first</>
-			}
-		</main>
+			</main>
+		</> : <>Login first</>
+		}
     </>
   )
 }

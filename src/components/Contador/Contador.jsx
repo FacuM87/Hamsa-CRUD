@@ -14,7 +14,7 @@ const Contador = ({stock, onAdd}) => {
     }
 
     return(
-        <div className="">      
+        <div className="contador">      
             <button className="" onClick={decrement}>-</button>
             <p className="">{quantity}</p> 
             <button className="" onClick={increment}>+</button>   
